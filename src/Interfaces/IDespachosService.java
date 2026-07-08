@@ -8,6 +8,6 @@ package Interfaces;
  *
  * @author romin
  */
-public interface NewInterface {
+public interface IDespachosService {
     
 }
