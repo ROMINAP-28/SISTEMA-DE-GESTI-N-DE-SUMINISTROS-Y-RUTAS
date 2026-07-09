@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package Interfaces;
 
-/**
- *
- * @author romin
- */
-public interface IVehiculoService {
+import Libreria.Vehiculo;
+
+
+public interface IVehiculoService { //Romina
+    
+    void registraVehiculo(Vehiculo v);
+    Vehiculo buscarVehiculo(String placa);
     
 }

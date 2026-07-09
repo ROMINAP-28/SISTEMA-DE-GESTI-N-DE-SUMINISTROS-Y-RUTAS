@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package Interfaces;
 
-/**
- *
- * @author romin
- */
-public interface IPaqueteService {
+import Libreria.Paquete;
+
+
+public interface IPaqueteService { //Romina
+    void registrarPaquete(Paquete p);
+    void modificarPaquete(Paquete p);
+    Paquete buscatPaquete(int id);
+    void elimnarPquete(int id);
     
 }
