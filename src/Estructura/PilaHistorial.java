@@ -42,6 +42,10 @@ public class PilaHistorial<T> {
             aux = aux.getSiguiente();
         }
     }
+    
+    public void vaciar() {
+        cima = null;
+    }
 
     public NodoGenerico<T> getCima() {
         return cima;

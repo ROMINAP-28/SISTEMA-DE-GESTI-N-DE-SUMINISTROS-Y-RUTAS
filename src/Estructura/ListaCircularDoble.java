@@ -1,16 +1,21 @@
-//Anyely
+
 package Estructura;
 
-public class ListaCircularDoble<T> {
-
+public class ListaCircularDoble<T> {//Anyely y Romina
+    
+    //Atributos
     private NodoGenerico<T> primero;
     private NodoGenerico<T> ultimo;
-
+    private NodoGenerico<T> actual;
+    
+    //Constructor inicializado en null
     public ListaCircularDoble() {
         primero = null;
         ultimo = null;
+        actual = null;
     }
-
+    
+    //Metodo que comprueba si la lista esta vacia
     public boolean estaVacia() {
         return primero == null;
     }
@@ -49,6 +54,61 @@ public class ListaCircularDoble<T> {
 
         } while (aux != primero);
         return null;
+    }
+    
+    public NodoGenerico<T> siguiente() {
+
+        if (estaVacia()) {
+            return null;
+        }
+
+        if (actual == null) {
+            actual = primero;
+        } else {
+            actual = actual.getSiguiente();
+        }
+
+        return actual;
+    }
+    
+    public NodoGenerico<T> anterior() {
+
+        if (estaVacia()) {
+            return null;
+        }
+
+        if (actual == null) {
+            actual = ultimo;
+        } else {
+            actual = actual.getAnterior();
+        }
+
+        return actual;
+    }
+    
+    public void reiniciarRecorrido() {
+        actual = null;
+    }
+    
+    public int tamaño() {
+
+        if (estaVacia()) {
+            return 0;
+        }
+
+        int contador = 0;
+
+        NodoGenerico<T> aux = primero;
+
+        do {
+
+            contador++;
+
+            aux = aux.getSiguiente();
+
+        } while (aux != primero);
+
+        return contador;
     }
 
     public void mostrar() {
@@ -105,6 +165,10 @@ public class ListaCircularDoble<T> {
 
     public NodoGenerico<T> getUltimo() {
         return ultimo;
+    }
+    
+    public NodoGenerico<T> getActual() {
+        return actual;
     }
 
 }

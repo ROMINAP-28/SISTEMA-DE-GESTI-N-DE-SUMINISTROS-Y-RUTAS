@@ -58,4 +58,9 @@ public class NodoGenerico<T> {
     public void setAltura(int altura) { 
         this.altura = altura; 
     }
+    
+    @Override
+    public String toString() {
+        return dato.toString();
+    }
 }

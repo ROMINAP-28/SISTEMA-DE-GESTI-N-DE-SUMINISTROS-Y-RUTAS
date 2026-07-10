@@ -1,9 +1,12 @@
-//Anyely
+
 package Estructura;
 
-public class ColaPrioridad<T> {
-    private NodoGenerico<T> frente;
-    
+import Libreria.Paquete;
+
+public class ColaPrioridad {  //Anyeli y Romina
+
+    private NodoGenerico<Paquete> frente;
+
     public ColaPrioridad() {
         frente = null;
     }
@@ -12,30 +15,51 @@ public class ColaPrioridad<T> {
         return frente == null;
     }
 
-    public void insertar(T dato) {
-        NodoGenerico<T> nuevo = new NodoGenerico<>(dato);
+    public void insertar(Paquete paquete) {
 
+        NodoGenerico<Paquete> nuevo = new NodoGenerico<>(paquete);
+
+        // Cola vacía
         if (estaVacia()) {
             frente = nuevo;
-
-        } else {
-            NodoGenerico<T> aux = frente;
-
-            while (aux.getSiguiente() != null) {
-                aux = aux.getSiguiente();
-            }
-
-            aux.setSiguiente(nuevo);
-            nuevo.setAnterior(aux);
+            return;
         }
+
+        // Si tiene mayor prioridad que el primero
+        if (paquete.getPrioridad() > frente.getDato().getPrioridad()) {
+
+            nuevo.setSiguiente(frente);
+            frente.setAnterior(nuevo);
+            frente = nuevo;
+            return;
+        }
+
+        NodoGenerico<Paquete> actual = frente;
+
+        while (actual.getSiguiente() != null &&
+               actual.getSiguiente().getDato().getPrioridad() >= paquete.getPrioridad()) {
+
+            actual = actual.getSiguiente();
+        }
+
+        nuevo.setSiguiente(actual.getSiguiente());
+
+        if (actual.getSiguiente() != null) {
+            actual.getSiguiente().setAnterior(nuevo);
+        }
+
+        actual.setSiguiente(nuevo);
+        nuevo.setAnterior(actual);
     }
 
-    public T eliminar() {
+    public Paquete eliminar() {
+
         if (estaVacia()) {
             return null;
         }
 
-        T dato = frente.getDato();
+        Paquete dato = frente.getDato();
+
         frente = frente.getSiguiente();
 
         if (frente != null) {
@@ -45,27 +69,51 @@ public class ColaPrioridad<T> {
         return dato;
     }
 
-    public T primero() {
+    public Paquete primero() {
+
         if (estaVacia()) {
             return null;
         }
+
         return frente.getDato();
     }
 
-    public void mostrar() {
-        NodoGenerico<T> aux = frente;
+    public int size() {
+
+        int contador = 0;
+
+        NodoGenerico<Paquete> aux = frente;
 
         while (aux != null) {
+            contador++;
+            aux = aux.getSiguiente();
+        }
+
+        return contador;
+    }
+
+    public void vaciar() {
+        frente = null;
+    }
+
+    public void mostrar() {
+
+        if (estaVacia()) {
+            System.out.println("La cola está vacía");
+            return;
+        }
+
+        NodoGenerico<Paquete> aux = frente;
+
+        while (aux != null) {
+
             System.out.println(aux.getDato());
+
             aux = aux.getSiguiente();
         }
     }
 
-    public NodoGenerico<T> getFrente() {
+    public NodoGenerico<Paquete> getFrente() {
         return frente;
-    }
-
-    public void setFrente(NodoGenerico<T> frente) {
-        this.frente = frente;
     }
 }

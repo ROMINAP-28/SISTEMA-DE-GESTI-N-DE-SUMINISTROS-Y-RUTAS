@@ -1,7 +1,7 @@
-//Anyely
+
 package Estructura;
 
-public class ArbolABB<T extends Comparable<T>> {
+public class ArbolABB<T extends Comparable<T>> { //Anyely y Romina
     private NodoGenerico<T> raiz;
 
     public ArbolABB() {
@@ -35,7 +35,7 @@ public class ArbolABB<T extends Comparable<T>> {
         return nodo;
     }
 
-    public T buscar(T dato) 
+    public T buscar(T dato) {
         NodoGenerico<T> encontrado = buscarRecursivo(raiz, dato);
 
         if (encontrado != null) {
@@ -43,6 +43,10 @@ public class ArbolABB<T extends Comparable<T>> {
         }
 
         return null;
+    }
+    
+    public boolean contiene(T dato) {
+        return buscar(dato) != null;
     }
 
     private NodoGenerico<T> buscarRecursivo(NodoGenerico<T> nodo, T dato) {
@@ -103,6 +107,86 @@ public class ArbolABB<T extends Comparable<T>> {
             System.out.println(nodo.getDato());
         }
     }
+    
+    private NodoGenerico<T> obtenerMenor(NodoGenerico<T> nodo) {
+
+        while (nodo.getIzquierdo() != null) {
+            nodo = nodo.getIzquierdo();
+        }
+
+        return nodo;
+    }
+    
+    public void eliminar(T dato) {
+        raiz = eliminarRecursivo(raiz, dato);
+    }
+    
+    private NodoGenerico<T> eliminarRecursivo(NodoGenerico<T> nodo, T dato) {
+
+        if (nodo == null) {
+            return null;
+        }
+
+        if (dato.compareTo(nodo.getDato()) < 0) {
+            nodo.setIzquierdo(
+                    eliminarRecursivo(nodo.getIzquierdo(), dato));
+
+        } else if (dato.compareTo(nodo.getDato()) > 0) {
+            nodo.setDerecho(
+                    eliminarRecursivo(nodo.getDerecho(), dato));
+
+        } else {
+            if (nodo.getIzquierdo() == null && nodo.getDerecho() == null) {
+                return null;
+            }
+            if (nodo.getIzquierdo() == null) {
+                return nodo.getDerecho();
+            }
+            if (nodo.getDerecho() == null) {
+                return nodo.getIzquierdo();
+            }
+
+            NodoGenerico<T> sucesor = obtenerMenor(nodo.getDerecho());
+            nodo.setDato(sucesor.getDato());
+            nodo.setDerecho(
+                    eliminarRecursivo(
+                            nodo.getDerecho(),
+                            sucesor.getDato()
+                    )
+            );
+        }
+
+        return nodo;
+    }
+    
+    public int altura() {
+        return alturaRecursiva(raiz);
+    }
+
+    private int alturaRecursiva(NodoGenerico<T> nodo) {
+
+        if (nodo == null){
+            return 0;
+        }
+        int izquierda = alturaRecursiva(nodo.getIzquierdo());
+        int derecha = alturaRecursiva(nodo.getDerecho());
+
+        return Math.max(izquierda, derecha) + 1;
+    }
+    
+    public int cantidadNodos() {
+        return contar(raiz);
+    }
+
+    private int contar(NodoGenerico<T> nodo) {
+
+        if (nodo == null){
+            return 0;
+        }
+        return 1
+                + contar(nodo.getIzquierdo())
+                + contar(nodo.getDerecho());
+    }   
 
     public NodoGenerico<T> getRaiz() {
         return raiz;
