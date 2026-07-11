@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>  //Romina
+
+<sistema>
+
+   
+    <paquetes>
+
+        <paquete>
+            <idPaquete>1</idPaquete>
+            <peso>2.5</peso>
+            <direccion>Arequipa - Paucarpata</direccion>
+            <categoria>Electrónica</categoria>
+            <prioridad>1</prioridad>
+        </paquete>
+
+        <paquete>
+            <idPaquete>2</idPaquete>
+            <peso>5.8</peso>
+            <direccion>Camaná</direccion>
+            <categoria>Alimentos</categoria>
+            <prioridad>2</prioridad>
+        </paquete>
+
+        <paquete>
+            <idPaquete>3</idPaquete>
+            <peso>1.2</peso>
+            <direccion>Moquegua</direccion>
+            <categoria>Medicamentos</categoria>
+            <prioridad>1</prioridad>
+        </paquete>
+
+    </paquetes>
+
+    <vehiculos>
+
+        <vehiculo>
+            <placa>ABC-123</placa>
+            <conductor>Pedro Ramos</conductor>
+            <tipo>Camión</tipo>
+            <estado>Disponible</estado>
+        </vehiculo>
+
+        <vehiculo>
+            <placa>XYZ-789</placa>
+            <conductor>Luis Torres</conductor>
+            <tipo>Furgón</tipo>
+            <estado>En Ruta</estado>
+        </vehiculo>
+
+        <vehiculo>
+            <placa>DEF-456</placa>
+            <conductor>Carlos Medina</conductor>
+            <tipo>Camioneta</tipo>
+            <estado>Mantenimiento</estado>
+        </vehiculo>
+
+    </vehiculos>
+
+    <rutas>
+
+        <ruta>
+            <codigo>1</codigo>
+            <nombre>Arequipa - Paucarpata</nombre>
+        </ruta>
+
+        <ruta>
+            <codigo>2</codigo>
+            <nombre>Arequipa - Cerro Colorado</nombre>
+        </ruta>
+
+        <ruta>
+            <codigo>3</codigo>
+            <nombre>Arequipa - Cayma</nombre>
+        </ruta>
+
+        <ruta>
+            <codigo>4</codigo>
+            <nombre>Arequipa - Camaná</nombre>
+        </ruta>
+
+    </rutas>
+
+    <categorias>
+
+        <categoria>
+            <codigo>1</codigo>
+            <nombre>Electrónica</nombre>
+        </categoria>
+
+        <categoria>
+            <codigo>2</codigo>
+            <nombre>Alimentos</nombre>
+        </categoria>
+
+        <categoria>
+            <codigo>3</codigo>
+            <nombre>Medicamentos</nombre>
+        </categoria>
+
+        <categoria>
+            <codigo>4</codigo>
+            <nombre>Ropa</nombre>
+        </categoria>
+
+        <categoria>
+            <codigo>5</codigo>
+            <nombre>Documentos</nombre>
+        </categoria>
+
+    </categorias>
+
+</sistema>
